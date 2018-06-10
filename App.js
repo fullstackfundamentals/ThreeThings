@@ -6,12 +6,32 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>What good things happened today?</Text>
-        <TextInput style={styles.input} placeholder="Something" />
-        <TextInput style={styles.input} placeholder="Something" />
-        <TextInput style={styles.input} placeholder="Something" />
+        <TextInput
+          style={styles.input}
+          ref="thing1"
+          placeholder="Something"
+          returnKeyType="next"
+          onSubmitEditing={() => this.refs.thing2.focus()} />
+        <TextInput
+          style={styles.input}
+          ref="thing2"
+          placeholder="Something"
+          returnKeyType="next"
+          onSubmitEditing={() => this.refs.thing3.focus()} />
+        <TextInput
+          style={styles.input}
+          ref="thing3"
+          placeholder="Something"
+          returnKeyType="next"
+          onSubmitEditing={() => this.refs.thing4.focus()} />
 
         <Text style={styles.text}>What could have gone better?</Text>
-        <TextInput style={styles.input} placeholder="Something" />
+        <TextInput
+          style={styles.input}
+          ref="thing4"
+          placeholder="Something"
+          returnKeyType="done"
+          onSubmitEditing={this.onSave} />
 
         <Button
           onPress={this.onSave}
