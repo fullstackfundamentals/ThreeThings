@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, KeyboardAvoidingView, TextInput, Button } from 'react-native';
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding">
         <Text style={styles.text}>What good things happened today?</Text>
         <TextInput
           style={styles.input}
@@ -38,7 +38,7 @@ export default class App extends React.Component {
           title="Save Update"
           accessibilityLabel="Save today's update"
         />
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 
