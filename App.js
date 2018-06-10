@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default class App extends React.Component {
   render() {
@@ -12,8 +12,18 @@ export default class App extends React.Component {
 
         <Text style={styles.text}>What could have gone better?</Text>
         <TextInput style={styles.input} placeholder="Something" />
+
+        <Button
+          onPress={this.onSave}
+          title="Save Update"
+          accessibilityLabel="Save today's update"
+        />
       </View>
     );
+  }
+
+  onSave() {
+    console.log('On Save fired');
   }
 }
 
