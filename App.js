@@ -1,23 +1,41 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hello, Full-Stack Fundamentals</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <Text style={styles.text}>What good things happened today?</Text>
+        <TextInput style={styles.input} placeholder="Something" />
+        <TextInput style={styles.input} placeholder="Something" />
+        <TextInput style={styles.input} placeholder="Something" />
+
+        <Text style={styles.text}>What could have gone better?</Text>
+        <TextInput style={styles.input} placeholder="Something" />
       </View>
     );
   }
 }
 
+const fontFamily = 'Avenir Next';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#AFDCE1',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 16
   },
+  text: {
+    fontFamily,
+    marginBottom: 16
+  },
+  input: {
+    fontFamily,
+    padding: 12,
+    backgroundColor: '#fff',
+    width: '100%',
+    marginBottom: 16
+  }
 });
