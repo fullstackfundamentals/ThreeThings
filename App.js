@@ -11,6 +11,8 @@ export default class App extends React.Component {
       thing3: '',
       thing4: '',
     }
+
+    this.loadTodaysItems();
   }
 
   render() {
@@ -23,6 +25,7 @@ export default class App extends React.Component {
           placeholder="Something"
           returnKeyType="next"
           onChangeText={thing1 => this.setState({ thing1 })}
+          value={this.state.thing1}
           onSubmitEditing={() => this.refs.thing2.focus()} />
         <TextInput
           style={styles.input}
@@ -30,6 +33,7 @@ export default class App extends React.Component {
           placeholder="Something"
           returnKeyType="next"
           onChangeText={thing2 => this.setState({ thing2 })}
+          value={this.state.thing2}
           onSubmitEditing={() => this.refs.thing3.focus()} />
         <TextInput
           style={styles.input}
@@ -37,6 +41,7 @@ export default class App extends React.Component {
           placeholder="Something"
           returnKeyType="next"
           onChangeText={thing3 => this.setState({ thing3 })}
+          value={this.state.thing3}
           onSubmitEditing={() => this.refs.thing4.focus()} />
 
         <Text style={styles.text}>What could have gone better?</Text>
@@ -46,6 +51,7 @@ export default class App extends React.Component {
           placeholder="Something"
           returnKeyType="done"
           onChangeText={thing4 => this.setState({ thing4 })}
+          value={this.state.thing4}
           onSubmitEditing={() => this.onSave()} />
 
         <Button
@@ -55,6 +61,24 @@ export default class App extends React.Component {
         />
       </KeyboardAvoidingView>
     );
+  }
+
+  async loadTodaysItems() {
+    try {
+      const data = await AsyncStorage.getItem(getDateKey());
+
+      if (data) {
+        const { thing1, thing2, thing3, thing4 } = JSON.parse(data);
+
+        this.setState({
+          thing1, thing2, thing3, thing4
+        });
+      } else {
+        console.log('There are no items for today!');
+      }
+    } catch (e) {
+      console.log(e.message);
+    }
   }
 
   async onSave() {
