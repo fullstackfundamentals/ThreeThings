@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, KeyboardAvoidingView, TextInput, Button, AsyncStorage } from 'react-native';
+import { Text, KeyboardAvoidingView, TextInput, Button, AsyncStorage } from 'react-native';
+import DayHeading from './components/DayHeading';
+import styles from './styles';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -18,6 +20,7 @@ export default class App extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
+        <DayHeading style={styles.dayHeading} />
         <Text style={styles.text}>What good things happened today?</Text>
         <TextInput
           style={styles.input}
@@ -97,26 +100,3 @@ export default class App extends React.Component {
 function getDateKey() {
   return '20180720';
 }
-
-const fontFamily = 'Avenir Next';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#AFDCE1',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 16
-  },
-  text: {
-    fontFamily,
-    marginBottom: 16
-  },
-  input: {
-    fontFamily,
-    padding: 12,
-    backgroundColor: '#fff',
-    width: '100%',
-    marginBottom: 16
-  }
-});
